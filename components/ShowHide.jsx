@@ -11,8 +11,7 @@ import React, {
  */
 
 export const ShowHideContext = createContext({
-  name: "",
-  show: true,
+  info: {},
   setShow: () => {},
 });
 
@@ -20,12 +19,12 @@ export function ShowHideAction({ children, name, ...props }) {
   const ctx = useContext(ShowHideContext);
   return cloneElement(React.Children.toArray(children)[0], {
     onClick: () => {
-      ctx.setShow(!ctx.show);
+      ctx.setShow(name, !ctx.info[name]);
     },
   });
 }
 
 export function ShowHideContent({ children, name }) {
   const ctx = useContext(ShowHideContext);
-  return <>{ctx.show ? children : null}</>;
+  return <>{ctx.info[name] ? children : null}</>;
 }
