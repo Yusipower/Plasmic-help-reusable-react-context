@@ -11,6 +11,7 @@ import React, {
  */
 
 export const ShowHideContext = createContext({
+  name: "",
   show: true,
   setShow: () => {},
 });
